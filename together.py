@@ -10,8 +10,9 @@ etherprice = pd.read_csv('./input/etherprice.csv')
 hashrate = pd.read_csv('./input/hashrate.csv')
 marketcap = pd.read_csv('./input/marketcap.csv')
 tx = pd.read_csv('./input/tx.csv')
+supply = pd.read_csv('./input/ethersupplygrowth.csv')
 
-df = pd.DataFrame([address['date-time'], address['address-count'], blocksize['blocksize'], etherprice['price'],
-      hashrate['global-hashrate'], marketcap['market-cap-value'], tx['amt-transactions-on-day']]).transpose()
+df = pd.DataFrame([address['timestamp'], address['total_addresses'], blocksize['blocksize'], etherprice['price_USD'],
+      hashrate['hashrate'], supply['total_eth_growth'] ,marketcap['market-cap-value'], tx['transactions']]).transpose()
 
-df.to_csv('all_data.csv', index=False)
+df.to_csv('./input/all_data.csv', index=False)
